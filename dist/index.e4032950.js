@@ -1,0 +1,18 @@
+const e=document.querySelector("[data-form=addStudent]"),t=document.querySelector("#table");document.getElementById("selectedCourse"),document.getElementById("selectVisitedCourses"),e.addEventListener("submit",e=>{e.preventDefault();let d=[],s={name:e.target.elements.name.value,surname:e.target.elements.surname.value,age:e.target.elements.age.value,course:e.target.elements.addCourse.value,visitedCourse:e.target.elements.addVisitedCourse.value};localStorage.getItem("studentsList")&&(d=JSON.parse(localStorage.getItem("studentsList"))),d.push(s),localStorage.setItem("studentsList",JSON.stringify(d));let a=d.length;t.insertAdjacentHTML("beforeend",`<td>${a}. ${s.name}</td>
+<td>${s.surname}</td>
+<td>${s.age}</td>
+<td>${s.course}</td>
+<td>${s.visitedCourse}</td>`)}),document.addEventListener("DOMContentLoaded",()=>{let e=JSON.parse(localStorage.getItem("studentsList"));e&&e.forEach((e,d)=>{t.insertAdjacentHTML("beforeend",`<td>${d+1}. ${e.name}</td>
+      <td>${e.surname}</td>
+      <td>${e.age}</td>
+      <td>${e.course}</td>
+      <td>${e.visitedCourse}</td>`)})});const d=document.querySelector("[data-button=editStudent]"),s=document.querySelector(".backdrop-edit"),a=document.querySelector("[data-form=editStudent]"),n=document.querySelector("[data-button=closeEditStudent]"),r=document.querySelector("[data-input=numEditInput]");d.addEventListener("click",()=>s.classList.toggle("is-hidden-edit")),n.addEventListener("click",()=>s.classList.toggle("is-hidden-edit")),r.addEventListener("input",e=>{let t=Number(e.target.value),d=JSON.parse(localStorage.getItem("studentsList")),s=a.elements;t>0&&t<=d.length&&d?(s.editName.value=d[t-1].name,s.editSurname.value=d[t-1].surname,s.editAge.value=d[t-1].age,s.editCourse.value=d[t-1].course,s.editVisitedCourse.value=d[t-1].visitedCourse):alert("Перевірте номер користувача який ви ввели ❗️")}),a.addEventListener("submit",e=>{e.preventDefault();let d=Number(r.value),a=JSON.parse(localStorage.getItem("studentsList")),n=e.target.elements;d>0&&d<=a.length&&a&&(a[d-1].name=n.editName.value,a[d-1].surname=n.editSurname.value,a[d-1].age=n.editAge.value,a[d-1].course=n.editCourse.value,a[d-1].visitedCourse=n.editVisitedCourse.value,localStorage.setItem("studentsList",JSON.stringify(a)),t.innerHTML="",a.forEach((e,d)=>{t.insertAdjacentHTML("beforeend",`<td>${d+1}. ${e.name}</td>
+        <td>${e.surname}</td>
+        <td>${e.age}</td>
+        <td>${e.course}</td>
+        <td>${e.visitedCourse}</td>`)})),s.classList.add("is-hidden-edit"),e.target.reset()});const u=document.querySelector("[data-button=deleteStudent]"),l=document.querySelector(".backdrop-delete"),i=document.querySelector("[data-form=deleteStudent]"),o=document.querySelector("[data-button=closeDeleteStudent]"),c=document.querySelector("[data-input=numDeleteInput]");u.addEventListener("click",()=>l.classList.toggle("is-hidden-delete")),o.addEventListener("click",()=>l.classList.toggle("is-hidden-delete")),c.addEventListener("input",e=>{let t=Number(e.target.value),d=JSON.parse(localStorage.getItem("studentsList"));t>0&&t<=d.length&&d||alert("Перевірте номер користувача який ви ввели ❗️")}),i.addEventListener("submit",e=>{e.preventDefault();let d=Number(c.value),s=JSON.parse(localStorage.getItem("studentsList"));d>0&&d<=s.length&&s&&(s.splice(d-1,1),localStorage.setItem("studentsList",JSON.stringify(s)),t.innerHTML="",s.forEach((e,d)=>{t.insertAdjacentHTML("beforeend",`<td>${d+1}. ${e.name}</td>
+          <td>${e.surname}</td>
+          <td>${e.age}</td>
+          <td>${e.course}</td>
+          <td>${e.visitedCourse}</td>`)})),l.classList.add("is-hidden-edit"),e.target.reset()});
+//# sourceMappingURL=index.e4032950.js.map
