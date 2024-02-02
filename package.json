@@ -1,0 +1,27 @@
+{
+  "name": "json-hw",
+  "version": "1.0.0",
+  "description": "https://0qsenxx.github.io/json-hw/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /json-hw",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0qsenxx/json-hw.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0qsenxx/json-hw/issues"
+  },
+  "homepage": "https://github.com/0qsenxx/json-hw#readme",
+  "dependencies": {
+    "gh-pages": "^6.1.1",
+    "parcel": "^2.11.0"
+  }
+}
